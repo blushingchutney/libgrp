@@ -14,4 +14,14 @@ add_library(
     ${LIBKSGRP_SOURCE_FILES}
 )
 
+install(
+    FILES ksgrp.hxx
+    DESTINATION include
+)
+
+install(
+    TARGETS ksgrp_static ksgrp_shared
+    DESTINATION lib
+)
+
 add_subdirectory(test)
