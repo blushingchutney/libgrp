@@ -13,3 +13,5 @@ add_library(
     ksgrp_shared SHARED
     ${LIBKSGRP_SOURCE_FILES}
 )
+
+add_subdirectory(test)
