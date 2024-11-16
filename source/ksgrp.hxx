@@ -17,6 +17,7 @@ class KSGRP {
 
         header_t header;
         std::vector<entry_t> entries;
+        std::vector<std::streampos> positions;
         
     public:
         KSGRP();

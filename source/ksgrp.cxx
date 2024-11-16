@@ -15,6 +15,12 @@ void KSGRP::loadFromFile(const char *path) {
     entries.resize(header.filecount);
     fp.read((char*)entries.data(), sizeof(entry_t) * header.filecount);
 
+    positions.resize(header.filecount);
+    for(int32_t i = 0;i < header.filecount;i++) {
+        positions[i] = fp.tellg();
+        fp.seekg(entries[i].size, std::ios::cur);
+    }
+
     fp.close();
 }
 
