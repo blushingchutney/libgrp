@@ -23,4 +23,6 @@ class KSGRP {
         ~KSGRP();
 
         void loadFromFile(const char *path);
+
+        int32_t find(const char *name, int32_t start = -1, int32_t end = -1);
 };
