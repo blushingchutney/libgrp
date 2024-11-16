@@ -1,5 +1,4 @@
 #include <fstream>
-#include <string>
 #include <cstring>
 
 #include "ksgrp.hxx"
@@ -8,7 +7,7 @@ KSGRP::KSGRP() {}
 KSGRP::~KSGRP() {}
 
 void KSGRP::loadFromFile(const char *path) {
-    std::ifstream fp(path, std::ios::binary);
+    std::ifstream fp(this->path = path, std::ios::binary);
 
     fp.read((char*)&header, sizeof(header_t));
 
@@ -40,3 +39,16 @@ int32_t KSGRP::find(const char *_name, int32_t start, int32_t end) {
     return -1;
 }
 
+std::vector<uint8_t> KSGRP::getData(int32_t index) {
+    std::ifstream fp(path, std::ios::binary);
+
+    std::vector<uint8_t> data;
+    data.resize(entries[index].size);
+
+    fp.seekg(positions[index]);
+
+    fp.read((char*)data.data(), entries[index].size);
+
+    fp.close();
+    return data;
+}
