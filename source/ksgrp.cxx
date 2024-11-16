@@ -52,3 +52,8 @@ std::vector<uint8_t> KSGRP::getData(int32_t index) {
     fp.close();
     return data;
 }
+
+const char* KSGRP::getIndexName(int32_t index) {
+    std::string s = entries[index].filename;
+    return s.c_str();
+}
